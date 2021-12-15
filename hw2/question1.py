@@ -9,7 +9,7 @@ def anagrams_of(s):
     else:
         # If it is not the base case, initialize an empty list that would contain anagrams
         anagrams = []
-        # Iterate over the already found anagrams recursively by calling the function itself by trimming the last character
+        # Iterate over the already found incomplete anagrams recursively by calling the function itself by trimming the last character
         for anagram in anagrams_of(s[:-1]):
             # Iterate again with the length of the string in recursion to slice the anagram and insert the last character in different positions
             for i in range(len(s)):
@@ -19,4 +19,6 @@ def anagrams_of(s):
         return anagrams
 
 # Test should return the list of all anagrams
+print(anagrams_of("po"))
+print(anagrams_of("pot"))
 print(anagrams_of("pots"))
