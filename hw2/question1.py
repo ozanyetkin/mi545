@@ -3,13 +3,12 @@
 
 def anagrams_of(s):
 	# Define the base case which is basically an empty string
-    if len(s) == 1:
-        return s
+    if len(s) == 0:
+        return []
     else:
-        anagrams = []
-        anagrams.append(anagrams_of(s[1:]) + anagrams_of(s[0]))
-        anagrams.append(anagrams_of(s[0]) + anagrams_of(s[1:]))
-
+        anagrams = anagrams_of(s[:-1])
+        for i in range(len(s)):
+            anagrams.append(s[i:] + s[i])
         return anagrams
 
 # Test should return the list of all anagrams
