@@ -1,5 +1,5 @@
 # Ozan Yetkin | 1908227
-# Write a recursive function that generates a list of all anagrams of a given string.
+# Write a recursive function that generates a list of all anagrams of a given string
 
 def anagrams_of(s):
 	# Define the base case which is basically a string with a single character
