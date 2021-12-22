@@ -1,15 +1,16 @@
-
 # This is a comment, Python ignores this.
 
 #%%
-# __ : 'D'ouble + 'UNDER'score => DUNDER 
+# __ : 'D'ouble + 'UNDER'score => DUNDER
 
-def add(x,y):
-    'This is a thing that adds x and y.'
+
+def add(x, y):
+    "This is a thing that adds x and y."
     print("Adding...")
-    return x+y
+    return x + y
 
-print(add(3,3))
+
+print(add(3, 3))
 
 # %%
 a = 5
@@ -17,7 +18,7 @@ b = a
 b = b + 1
 
 # %%
-a = [1,2,3]
+a = [1, 2, 3]
 b = a
 b[0] = b[0] + 1
 # %%
@@ -32,34 +33,38 @@ b = a
 b = b + " acar"
 # %%
 def add_and_multiply(x, y):
-    'Adds and multiplies x and y, returns the results, respectively'
-    return ( x+y, x*y)
+    "Adds and multiplies x and y, returns the results, respectively"
+    return (x + y, x * y)
+
+
 # %%
 
 
-person = {   "name": "aybar",
-            "lastname": "acar",
-            "address": myaddress,
-            "age": 42 ,
-            34098: "mysecret",
-            (1,4,5): 98 }
+person = {
+    "name": "aybar",
+    "lastname": "acar",
+    "address": myaddress,
+    "age": 42,
+    34098: "mysecret",
+    (1, 4, 5): 98,
+}
 # %%
 
 
-personlist = [ "aybar", "acar", myaddress, 42 ]
+personlist = ["aybar", "acar", myaddress, 42]
 # %%
 a = 5
-a += 1 # == a = a + 1
+a += 1  # == a = a + 1
 a
 # %%
-s = 'sdfsdf'
+s = "sdfsdf"
 s.upper()
 # %%
 
-data = [323, 234, 234, 22, 234 ,234 ,222,654, 234, 323]
+data = [323, 234, 234, 22, 234, 234, 222, 654, 234, 323]
 j = 0
 total = 0
-while j < len(data) and data[j] != 'End':
+while j < len(data) and data[j] != "End":
     total += data[j]
     j += 1
 
@@ -84,38 +89,50 @@ gauss = 0
 for i in range(n):
     gauss += i
 
-assert gauss == (n-1)*n/2 , f"the calculation was {gauss}, should have been {(n-1)*n/2}"
+assert (
+    gauss == (n - 1) * n / 2
+), f"the calculation was {gauss}, should have been {(n-1)*n/2}"
 # %%
 
 # %%
 
-def hello(name='Stranger'):
+
+def hello(name="Stranger"):
     return f"Hello, {name}!"
 
+
 # %%
-def count(data, target): 
-    n=0
+def count(data, target):
+    n = 0
     for item in data:
         if item == target:
-            n += 1 
+            n += 1
     return n
+
+
 # %%
+
 
 def contains(data, target):
     for item in data:
         if item == target:
             return True
+
+
 # %%
 
+
 def shoppinglist(**kwargs):
-    print('Your shopping list is:')
+    print("Your shopping list is:")
     total = 0.0
     for item in kwargs:
         print(f"{item}: {kwargs[item]}TL")
         total += kwargs[item]
-    print(f'Total: {total}₺')
+    print(f"Total: {total}₺")
+
 
 # %%
+
 
 def add(x=0, *args):
     result = x
@@ -123,20 +140,24 @@ def add(x=0, *args):
         result += arg
     return result
 
+
 # %%
 
 import random
+
 # %%
-random.randint(0,10)
+random.randint(0, 10)
 # %%
 
+
 def dice(limit=None):
-    if limit is  None:
-        while True: 
-            yield random.randint(1,6)
+    if limit is None:
+        while True:
+            yield random.randint(1, 6)
     else:
         for i in range(limit):
-            yield random.randint(1,6) 
+            yield random.randint(1, 6)
+
 
 for die in dice(10):
     print(die)
@@ -151,22 +172,22 @@ except StopIteration:
 
 # %%
 
-[(x,y) for x in range(4) for y in range(4) if x**2 + y**2 < 2]
+[(x, y) for x in range(4) for y in range(4) if x ** 2 + y ** 2 < 2]
 
-# Equivalent 
+# Equivalent
 
 coords = []
 for x in range(4):
     for y in range(4):
-        if x**2 + y**2 < 2:
-            coords.append((x,y))
+        if x ** 2 + y ** 2 < 2:
+            coords.append((x, y))
 
 # %%
 
-for x,y in [(x,y) for x in range(4) for y in range(4)]:
-    print(f'{x}, {y}: {x-y}')
+for x, y in [(x, y) for x in range(4) for y in range(4)]:
+    print(f"{x}, {y}: {x-y}")
 
-for t in [(x,y) for x in range(4) for y in range(4)]:
-    print(f'{t[0]}, {t[1]}: {t[0]-t[1]}')
+for t in [(x, y) for x in range(4) for y in range(4)]:
+    print(f"{t[0]}, {t[1]}: {t[0]-t[1]}")
 
 # %%
