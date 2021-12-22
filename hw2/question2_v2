@@ -23,15 +23,7 @@ maze2 = [[0, 1, 0, 0, 0, 0, 0, 1],
 
 # Initialize the function that takes maze, start, and goal as input
 def is_solvable(maze, start, goal):
-    
-    path = set()
-    advance(start, maze, path)
-
-    if goal in path:
-        return True
-    else:
-        return False
-
+    pass
 
 def get_neighbors(position, maze):
     directions = [(0, 1), (1, 0), (0, -1), (-1, 0)]
@@ -40,26 +32,21 @@ def get_neighbors(position, maze):
     neighbors = list(filter( lambda p: 0 <= p[1] < len(maze), tmp2))
     return neighbors
 
-# print(get_neighbors((5, 0), maze1))
+print(get_neighbors((7, 7), maze1))
 
 def get_value(position, maze):
     return maze[position[1]][position[0]]
 
-def set_value(position, maze):
-    maze[position[1]][position[0]] = 1
-    return maze
+# print(get_value((4,0), maze1))
 
-# print([get_value(n, maze1) for n in get_neighbors((5, 0), maze1)])
-# print(set_value((0,0), maze1))
-
-def advance(position, maze, path):
-    # if get_value(position, maze) == 0 and min([get_value(n, maze) for n in get_neighbors(position, maze)]) == 1:
-    if position in path or get_value(position, maze) == 1:
+def advance(position, maze, path, goal):
+    if position in path:
         return
     path.add(position)
     for n in get_neighbors(position, maze):
-        # path.add(n)
-        advance(n, maze, path)
+        if n == goal:
+            break
+        return advance(n, maze, path, goal)
 
 def get_zeros(maze):
     zeros = []
