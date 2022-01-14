@@ -29,6 +29,20 @@ def question_1e(n):
     while i < n*n:
         i = i + (n // 2)
 
+def question_1f(n):
+    i = 1
+    while i < n:
+        j = 1
+        while j < n:
+            j = j + 1
+        i = 2 * i
+
+def question_1g(n):
+    for i in range(n):
+        j = 1
+        while j < 100:
+            j = j + 1
+
 n_list = []
 t_list = []
 for n in range(0, 1000, 10):
@@ -36,7 +50,7 @@ for n in range(0, 1000, 10):
     t1_start = perf_counter()
 
     # Call the function with n
-    question_1e(n)
+    question_1g(n)
 
     # Stop the stopwatch / counter
     t1_stop = perf_counter()
@@ -45,7 +59,7 @@ for n in range(0, 1000, 10):
     n_list.append(n)
     t_list.append(t1_stop - t1_start)
 
-# plot
+# Plot
 fig, ax = plt.subplots()
 ax.plot(n_list, t_list, linewidth=2.0)
 
