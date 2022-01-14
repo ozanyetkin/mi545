@@ -19,6 +19,16 @@ def question_1c(n):
         for j in range(i+1,n):
             k += 1
 
+def question_1d(n):
+    i = 1
+    while i < n*n*n:
+        i = i + (2*n)
+
+def question_1e(n):
+    i = 1
+    while i < n*n:
+        i = i + (n // 2)
+
 n_list = []
 t_list = []
 for n in range(0, 1000, 10):
@@ -26,7 +36,7 @@ for n in range(0, 1000, 10):
     t1_start = perf_counter()
 
     # Call the function with n
-    question_1c(n)
+    question_1e(n)
 
     # Stop the stopwatch / counter
     t1_stop = perf_counter()
