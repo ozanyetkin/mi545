@@ -1,18 +1,29 @@
 # Ozan Yetkin | 1908227
+import bisect
 
 example_input = [4, 3, 2, 6]
 
+# First try
 def find_min_cost(stick_list):
     cost = 0
     while len(stick_list) > 1:
         stick_list.sort()
-
         s1 = stick_list.pop(0)
         s2 = stick_list.pop(0)
         cost += s1 + s2
         stick_list.append(s1 + s2)
-
     return cost
+
+def find_min_cost(stick_list):
+    total_cost = 0
+    stick_list.sort()
+    while len(stick_list) > 1:
+        s1 = stick_list.pop(0)
+        s2 = stick_list.pop(0)
+        cost = s1 + s2
+        total_cost += cost
+        bisect.insort(stick_list, cost) 
+    return total_cost
 
 print(find_min_cost(example_input))
 
