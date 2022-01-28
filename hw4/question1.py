@@ -44,7 +44,7 @@ class PrecisionClock(Clock):
     def __init__(self, h=0, m=0, s=0):
         'The constructor for precision clock'
         super().__init__(h, m)
-        
+
         try:
             s = int(s)
         except ValueError:
