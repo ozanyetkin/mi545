@@ -1,9 +1,12 @@
 # Ozan Yetkin | 1908227
+# Import the built-in bisect and heapq libraries
 import bisect
+import heapq
 
+# Initialize the example input to test the functions
 example_input = [4, 3, 2, 6]
 
-# First try
+# First try, failing only on the last test
 def find_min_cost(stick_list):
     cost = 0
     while len(stick_list) > 1:
@@ -14,9 +17,11 @@ def find_min_cost(stick_list):
         stick_list.append(s1 + s2)
     return cost
 
+# Second try, passing all the tests but still a bit slow on the last (2.2 seconds)
 def find_min_cost(stick_list):
     total_cost = 0
     stick_list.sort()
+    
     while len(stick_list) > 1:
         s1 = stick_list.pop(0)
         s2 = stick_list.pop(0)
@@ -25,10 +30,26 @@ def find_min_cost(stick_list):
         bisect.insort(stick_list, cost) 
     return total_cost
 
+# Third try, passing all the tests like charm
+def find_min_cost(stick_list):
+    total_cost = 0
+    tmp = []
+
+    for stick in stick_list:
+        heapq.heappush(tmp, stick)
+    sorted_sticks = [heapq.heappop(tmp) for i in range(len(tmp))]
+    
+    while len(sorted_sticks) > 1:
+        s1 = heapq.heappop(sorted_sticks)
+        s2 = heapq.heappop(sorted_sticks)
+        cost = s1 + s2
+        total_cost += cost
+        heapq.heappush(sorted_sticks, cost)
+    return total_cost
+
 print(find_min_cost(example_input))
 
 # find_min_cost() Tests
-
 import time
 import random
 
