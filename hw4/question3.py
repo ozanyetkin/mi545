@@ -14,5 +14,21 @@ def post_from_pre(preorder):
             postorder.insert(0, current)
     return postorder
 
+import itertools
+
+def post_from_pre(preorder):
+    if not preorder:
+        return []
+    else:
+        root = preorder[0]
+        left = list(itertools.takewhile(lambda x: x < root, preorder[1:]))
+        right = preorder[len(left) + 1:]
+        return post_from_pre(left) + post_from_pre(right) + [root]
+
 # Test the function which should return [18, 52, 60, 54, 51]
+print(post_from_pre(example_input))
+
+example_input = [20, 10, 6, 15, 30, 35]
+
+# Test the function which should return [6, 15, 10, 35, 30, 20]
 print(post_from_pre(example_input))
