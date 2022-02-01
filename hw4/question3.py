@@ -17,13 +17,15 @@ def post_from_pre(preorder):
 import itertools
 
 def post_from_pre(preorder):
-    if not preorder:
+    if len(preorder) == 0:
         return []
-    else:
-        root = preorder[0]
-        left = list(itertools.takewhile(lambda x: x < root, preorder[1:]))
-        right = preorder[len(left) + 1:]
-        return post_from_pre(left) + post_from_pre(right) + [root]
+    root = preorder[0]
+    left = []
+    for node in preorder[1:]:
+       if node < root:
+            left.append(node)
+    right = preorder[len(left) + 1:]
+    return post_from_pre(left) + post_from_pre(right) + [root]
 
 # Test the function which should return [18, 52, 60, 54, 51]
 print(post_from_pre(example_input))
