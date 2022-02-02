@@ -41,35 +41,42 @@ class Clock:
 
 # Create another class for PrecisionClock that extends the original Clock class
 class PrecisionClock(Clock):
+    # Initialize the extended class taking hour, minute, and second as parameters with default as 0
     def __init__(self, h=0, m=0, s=0):
         'The constructor for precision clock'
         super().__init__(h, m)
 
+        # Use try except to raise value error if invalid data type for second entered by the user
         try:
             s = int(s)
         except ValueError:
             raise ValueError("Error: Seconds should be integers or strings containing integers!")
-        
+
+        # Use an if condition to raise value error if invalid value for second is provided by the user
         if s < 0 or s > 59:
             raise ValueError("Second must be between 0 and 59")
         self._second = s
 
+    # Override the string method to represent the precision clock in hh:mm:ss format
     def __str__(self):
         'Convert the time into a printable format (e.g. 23:10:35)'
         return "%02d:%02d:%02d" % (self._hour,self._minute, self._second)
 
+    # Override the tick method of base class to make it work in seconds instead of minutes
     def tick(self):
         'Add one second to the current time'
         self._second += 1
 
+        # Check if the second is equal to 60, if it is the case set it back to 0 and increment minute by 1
         if self._second == 60:
             self._second = 0
             self._minute += 1
-
+        # Check if the minute is equal to 60, if it is the case set it to m mod60 and increment hour by one in mod24
         if self._minute == 60:
             self._minute = self._minute % 60
             self._hour = (self._hour + 1) % 24
 
+    # Override the equal method of base class to check equality for precision clock, taking second into account
     def __eq__(self, other):
         'Check whether the current time is equal to the time on the other Clock'
         if isinstance(other, PrecisionClock):
@@ -79,7 +86,7 @@ class PrecisionClock(Clock):
         else:
             return False
 
-# Precision Clock Tests
+# Run the test harness provided for precision clock
 #TEST 1
 if str(PrecisionClock(23,32)) == "23:32:00":
     print("Test 1 PASSED")

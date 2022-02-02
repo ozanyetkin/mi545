@@ -21,5 +21,5 @@ print(post_from_pre(example_input))
 
 example_input = [20, 10, 6, 15, 30, 35]
 
-# Test the function which should return [6, 15, 10, 35, 30, 20]
+# Test the function with another input just to be sure which should return [6, 15, 10, 35, 30, 20]
 print(post_from_pre(example_input))
